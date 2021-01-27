@@ -1,0 +1,56 @@
+<mat-card class="example-card px-5 py-4">
+  <mat-card-header>
+    <mat-card-title>Card Details</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="form" class="w-100" >
+    <p>
+      <mat-form-field>
+        <input type="text" onlyNumbers maxlength="16" matInput placeholder="Card Number" formControlName="creditCardNumber">
+        <mat-error *ngIf="form.controls.creditCardNumber?.errors">Please Enter Card Number</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Card Holder Name" formControlName="cardHolder">
+        <mat-error *ngIf="form.controls.cardHolder?.errors">Please Enter card Holder Name</mat-error>
+      </mat-form-field>
+    </p>
+
+    <div class="d-flex justify-content-between">
+      <div>
+        <mat-form-field>
+          <input  [min]="minData" matInput placeholder="Expiration Date"  [matDatepicker]="picker"  formControlName="expirationDate">
+
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+
+          <mat-error *ngIf="form.controls.expirationDate?.errors">Please Enter ExpirationDate </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input type="text" onlyNumbers maxlength="3" matInput placeholder="Security Code" formControlName="securityCode">
+
+          <mat-error *ngIf="form.controls.securityCode?.errors?.minlength"> Security Code should be 3 digit </mat-error>
+
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input type="number" [min]=0 matInput placeholder="Amount" formControlName="amount">
+        <mat-error *ngIf="form.controls.amount?.errors">Please Enter Amount </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button (click)="pay()" mat-raised-button color="primary" class="w-100 mt-1">Submit</button>
+  </form>
+
+  <mat-card-actions class="d-flex justify-content-center">
+    <!-- <button  mat-raised-button color="accent" class="mt-1" [routerLink]="['/']">Back</button> -->
+  </mat-card-actions>
+
+</mat-card>
+
