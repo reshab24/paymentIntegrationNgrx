@@ -9,13 +9,12 @@ export class ToggleAppComponentButtonService {
   private toggleState$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   constructor() { }
 
-  toggleState(state:boolean):void{
+  toggleState(state: boolean): void {
     this.toggleState$.next(state);
   }
 
-  get getToggleState() :Observable<boolean>{
+  get getToggleState(): Observable<boolean> {
     return this.toggleState$.asObservable();
   }
-
 
 }

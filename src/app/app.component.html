@@ -1,5 +1,11 @@
-<!-- <div *ngIf="showButton" class="d-flex justify-content-center align-items-center containerHeight">
-  <button mat-raised-button color="primary" [routerLink]="['/home']" (click)="setToggleState()">Open Payment Card</button>
-</div> -->
+<div *ngIf="toggleState$ | async" class="d-flex justify-content-center my-5">
+
+  <button mat-raised-button color="primary" [routerLink]="['/home']">Open Payment Card</button>
+
+  <div *ngIf="cardStoreData$ | async as storeData">
+    {{storeData | json}}
+  </div>
+
+</div>
 
 <router-outlet></router-outlet>

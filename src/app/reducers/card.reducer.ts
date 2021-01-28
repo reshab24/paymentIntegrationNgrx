@@ -1,12 +1,7 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { authCard, initCardStripe, initiatePayCard } from '../actions/card.actions';
-import { creditCardDto } from '../dto/creditCardDto';
+import { CardState } from '../dto/creditCardDto';
 
-
-export interface CardState {
-  cardDetails: creditCardDto,
-  sourceToken: string
-}
 
 export const initialState: CardState = {
   cardDetails: null,
@@ -16,18 +11,18 @@ export const initialState: CardState = {
 
 export const cardReducer = createReducer(
   initialState,
-  on(initCardStripe, (state)=>{
+  on(initCardStripe, (state) => {
     return {
       ...state
     }
   }),
-  on(initiatePayCard, (state, {data})=>{
+  on(initiatePayCard, (state, { data }) => {
     return {
       ...state,
       cardDetails: data
     }
   }),
-  on(authCard, (state, action)=>{
+  on(authCard, (state, action) => {
     return {
       ...state,
       sourceToken: action.data.id,

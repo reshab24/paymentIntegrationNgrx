@@ -12,12 +12,12 @@ export const initiatePayCard = createAction(
 
 export const authCard = createAction(
   '[Card] Authenticate',
-  props<{ data: {card: {id: string}, id: string} }>()
+  props<{ data: { card: { id: string }, id: string } }>()
 );
 
 export const custCreateCard = createAction(
   '[Card] Create Customer',
-  props<{ data: {'description': string, "email": string, "name": string} }>()
+  props<{ data: { 'description': string, "email": string, "name": string } }>()
 );
 
 export const sourceCreateCard = createAction(
